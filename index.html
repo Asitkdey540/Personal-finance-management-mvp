@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <title>Personal Finance Manager (Offline)</title>
+</head>
+
+<body>
+  <div class="app" role="application">
+    <h1>Personal Finance Manager (Offline)</h1>
+    <p class="lead">A lightweight browser-only personal finance system (MVP) — stores data in localStorage and allows
+      JSON backup/restore. </p>
+
+    <div class="container">
+
+      <h1>How to Use Personal Finance Manager</h1>
+      <ol>
+        <li><strong>Set Budget (Optional):</strong> In the input section, enter your monthly budget amount if you want
+          to track against it. You can leave it blank if not needed.</li>
+        <li><strong>Add Fixed Expense Items:</strong> Enter the item name and its fixed price, then submit. These items
+          will appear as quick-add buttons for future use.</li>
+        <li><strong>Add Expenses:</strong>
+          <ul>
+            <li>Click a fixed expense button to quickly add it to your expense table with today’s date.</li>
+            <li>Or use the editable table to add variable-priced or occasional items manually.</li>
+          </ul>
+        </li>
+        <li><strong>File Upload (Optional):</strong> If you have a saved JSON backup of your previous data, select it in
+          the file input to restore and continue recording.</li>
+        <li><strong>View Expense Summary:</strong> The total of all expenses is displayed at the bottom of the expense
+          table. The summary section shows your budget, total expenses, and remaining balance.</li>
+        <li><strong>Backup Your Data:</strong> Use the "Download Data" option to save your local storage data as a JSON
+          file. This protects against data loss when browser data gets deleted.</li>
+        <li><strong>Automatic Monthly Reset:</strong> At the start of a new month, the system will carry over your
+          remaining budget, clear the expense table, and start fresh. You can edit the carried-over budget anytime.</li>
+      </ol>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <section id="inputSection">
+      <div class="row">
+        <div class="col">
+          <label for="budgetInput">Budget (optional)</label>
+          <input id="budgetInput" type="number" placeholder="Enter monthly budget" min="0" />
+        </div>
+        <div class="col">
+          <label for="itemName">Fixed Item Name</label>
+          <input id="itemName" type="text" placeholder="e.g. Rice, Milk" />
+        </div>
+        <div class="col">
+          <label for="itemPrice">Fixed Item Price</label>
+          <input id="itemPrice" type="number" placeholder="e.g. 50" min="0" />
+        </div>
+        <div class="col">
+          <label for="fileInput">Upload JSON (optional)</label>
+          <input id="fileInput" type="file" accept="application/json" />
+        </div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button id="saveInputBtn">Save / Add</button>
+        <button id="downloadBtn" class="ghost">Download JSON Backup</button>
+        <button id="clearAllBtn" class="warn">Clear All Data</button>
+        <span style="color:#64748b;font-size:13px">Local storage key: <strong>pfm_data_v1</strong></span>
+      </div>
+    </section>
+
+    <hr style="margin:14px 0;border:none;border-top:1px dashed #eef4fb" />
+
+    <section>
+      <h3>Fixed Expense Items</h3>
+      <p style="margin:0 0 6px;color:#56667a;font-size:13px">Click an item to add it to the month's expenses quickly.
+      </p>
+      <div id="fixedItemsContainer" class="fixed-items" aria-live="polite"></div>
+    </section>
+
+    <hr style="margin:14px 0;border:none;border-top:1px dashed #eef4fb" />
+
+    <section>
+      <h3>Expense Calculator (Editable)</h3>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+        <button id="newRowBtn" class="ghost">New</button>
+        <button id="clearMonthBtn" class="ghost">Clear This Month's Expenses</button>
+        <div style="color:#64748b;font-size:13px">Tip: Edit date/name/price directly. Price must be numeric.</div>
+      </div>
+      <div class="table-wrap">
+        <table id="expenseTable" aria-describedby="tableDesc">
+          <thead>
+            <tr>
+              <th style="width:140px">Date</th>
+              <th>Item</th>
+              <th style="width:120px">Price</th>
+              <th style="width:60px">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2" style="text-align:right;font-weight:700">Total</td>
+              <td id="totalPrice" class="big">0</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <hr style="margin:14px 0;border:none;border-top:1px dashed #eef4fb" />
+
+    <section>
+      <h3>Budget Summary</h3>
+      <div class="summary">
+        <div class="card">
+          <h3>Budget</h3>
+          <div id="showBudget" class="big">—</div>
+        </div>
+        <div class="card">
+          <h3>Total Expenses</h3>
+          <div id="showExpenses" class="big">0</div>
+        </div>
+        <div class="card">
+          <h3>Remaining</h3>
+          <div id="showRemaining" class="big">—</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot">
+      <div style="font-size:13px;color:#7b8794">Built for offline use — data is stored locally in your browser.</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="exportMonthBtn" class="ghost">Export This Month (JSON)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

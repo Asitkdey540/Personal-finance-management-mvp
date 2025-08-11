@@ -1,0 +1,183 @@
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body {
+    margin: 0;
+    background: #f5f7fb;
+    color: #111;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 18px;
+}
+
+.app {
+    width: 100%;
+    max-width: 980px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(20, 30, 60, 0.08);
+    padding: 18px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 20px
+}
+
+p.lead {
+    margin: 0 0 16px;
+    color: #445566
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e1e6ef;
+    border-radius: 8px;
+    font-size: 14px
+}
+
+.col {
+    flex: 1;
+    min-width: 220px
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+button {
+    background: #0b5cff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+button.ghost {
+    background: transparent;
+    color: #0b5cff;
+    border: 1px solid #d7e1ff
+}
+
+button.warn {
+    background: #ff5b5b
+}
+
+.fixed-items {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px
+}
+
+.fixed-items button {
+    background: #eef5ff;
+    color: #0b5cff;
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-weight: 600;
+    border: none
+}
+
+.table-wrap {
+    overflow: auto;
+    margin-top: 12px;
+    border: 1px solid #eef3fb;
+    border-radius: 8px
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px
+}
+
+th,
+td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f4fb;
+    text-align: left
+}
+
+th {
+    background: #fbfdff;
+    font-weight: 700;
+    font-size: 13px
+}
+
+td input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #edf2f8;
+    border-radius: 6px
+}
+
+td .del {
+    background: transparent;
+    color: #ff5b5b;
+    border: none;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px
+}
+
+.card {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #fbfdff;
+    border: 1px solid #eef6ff
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 14px
+}
+
+.big {
+    font-size: 20px;
+    margin-top: 6px;
+    font-weight: 700
+}
+
+.foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px
+}
+
+@media(min-width:900px) {
+    h1 {
+        font-size: 22px
+    }
+}
